@@ -1,0 +1,164 @@
+html {
+    width: 60%;
+    height: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    background-color: #FAFFFF;
+}
+body {
+    height: 100%;
+    min-height: 100%;
+    line-height: 1.75;
+    background-color: #FAFFFF;
+    font-family: Arial;
+
+}
+table, th, td {
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+  text-align: left;
+  font-size: 18px;
+}
+a:link:hover {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    text-decoration: underline;
+    cursor: pointer;
+    cursor: hand;
+}
+input[type=submit], button {
+    cursor: pointer;
+    cursor: hand;
+}
+#mainTitle {
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    font-family: 'Ubuntu';
+    font-size:30px;
+}
+#FLPanel {
+  height:400px;
+}
+#table1 {
+  line-height: 1.75;
+  word-wrap:break-word;
+}
+#table2 {
+    line-height: 1.4;
+    word-wrap:break-word;
+}
+#table3 {
+    line-height: 1.4;
+    word-wrap:break-word;
+}
+#table4 {
+    line-height: 1.4;
+    word-wrap:break-word;
+}
+#ViewPanel2 {
+  margin-bottom:100px;
+}
+#select {
+  padding: 5px;
+}
+#eventForm {
+  line-height: 1.2;
+  margin-bottom: 25px;
+}
+#leftbox {
+  display:inline-block;
+  float: left;
+  width: 50%;
+  height:100%;
+  overflow: auto;
+  white-space: nowrap;
+  padding: 3px;
+}
+#rightbox {
+  display:inline-block;
+  float: right;
+  width: 50%;
+  height:100%;
+  overflow: auto;
+  white-space: nowrap;
+  border-left: 2px solid black;
+  padding: 3px;
+}
+#serverPanel {
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 2px;
+  width: auto;
+  height:380px;
+  overflow: hidden;
+  margin-bottom: 5px;
+  padding: 10px 10px 10px 10px;
+  line-height: 0.5;
+  white-space: nowrap;
+}
+.padBottom {
+  margin-bottom: 15px;
+}
+.form-control {
+  margin-bottom: 15px;
+}
+.dropdown {
+  padding: 5px;
+}
+.fileLogPanel {
+  border-style: none;
+  width: 100%;
+  height:350px;
+  overflow: auto;
+  margin-bottom: 5px;
+  padding: 10px 10px 10px 10px;
+  line-height: 0.5;
+}
+.btn1 {
+  padding:10px;
+  margin: 3px;
+}
+
+.scrollBox {
+  border-style: solid;
+  border-radius: 3px;
+  border-width: 2px;
+  width: 100%;
+  height:250px;
+  overflow: auto;
+  margin-bottom: 5px;
+  padding: 10px 10px 10px 10px;
+  line-height: 0.5;
+  white-space: nowrap;
+}
+
+.statusText
+{
+  text-align: right;
+  font-family: 'Ubuntu';
+  font-size:16px;
+}
+
+@media(max-width: 900px) {
+    html {
+        font-size: 14px !important;
+        width: 80% !important;
+    }
+}
+@media(max-width: 480px) {
+    html {
+        font-size: 12px !important;
+        width: 90% !important;
+    }
+}
+@media(max-width: 320px) {
+    html {
+        font-size: 12px !important;
+        width: 100% !important;
+    }
+}

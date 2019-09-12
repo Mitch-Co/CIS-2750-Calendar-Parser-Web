@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Calendar Manager</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A simple .ical viewer">
+  <meta name="keywords" content="Calendar">
+  <meta name="author" content="Mitchell Coakley">
+  <!-- Load jquery, bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!-- Custom CSS -->
+  <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <!-- Custom CSS End -->
+</head>
+<body>
+  <h2 id="mainTitle">{Calendar Manager}</h2>
+  <br>
+  <h3 class="headers">Status Panel:</h3>
+  <div id="statusPanel" class="scrollBox">
+  </div>
+  <hr>
+  <h3 class="headers">Server Panel:</h3>
+  <div id="serverPanel">
+    <div id="leftbox" align="left">
+      <form ref="loginPanel" id="form3">
+        <div>
+          <p>Username:</p>
+          <input type="text" class="form-control" id="USR1" placeholder="UserName" required="">
+          <p>Password:</p>
+          <input type="password" class="form-control" id="PSW1" placeholder="Password" required="">
+          <p>Database:</p>
+          <input type="text" class="form-control" id="DID1" placeholder="Database" required="">
+          <input type="submit" class="btn1" value="Login" id="login">
+        </div>
+      </form>
+    </div>
+    <div id="rightbox" align="left">
+      <input type="button" class="btn1" value="Store Local Files in Database" id="uploadToDB">
+      <br>
+      <input type="submit" class="btn1" value="Clear All Files from Database" id="clearDB">
+      <br>
+      <input type="submit" class="btn1" value="Display Status of Database" id="displayStatus">
+      <hr>
+      <p2>Queries:</p2>
+      <br>
+      <br>
+      <input type="submit" class="btn1" value="Im very sorry" id="Q1">
+      <br>
+      <input type="submit" class="btn1" value="but none of these" id="Q2">
+      <br>
+      <input type="submit" class="btn1" value="queries work." id="Q3">
+      <br>
+      <input type="submit" class="btn1" value="Everything else" id="Q4">
+      <br>
+      <input type="submit" class="btn1" value="should be fine" id="Q5">
+      <br>
+      <input type="submit" class="btn1" value="though." id="Q6">
+    </div>
+  </div>
+  <hr>
+
+  <h3 class="headers">File Log Panel:</h3>
+  <div id="FLPanel" class="fileLogPanel">
+    <table style="width:100%" id="table1">
+      <tr class="headerRow">
+        <th>File Name (click to download)</th>
+        <th>Version</th>
+        <th>Product ID</th>
+        <th>Number of Events</th>
+        <th>Number of Properties</th>
+      </tr>
+    </table>
+  </div>
+  <div>
+    <form id = "uploadform" enctype = "multipart/form-data" method = "post" action="/upload">
+      <input type="submit" value="Upload" id="submt" disabled >
+      <input name = "uploadFile" type = "file" accept=".ics" id="submtText">
+    </form>
+  </div>
+
+  <hr>
+
+  <h3 class="headers">Calendar Event Panel:</h3>
+  <div class="dropdown">
+    <select id="select">
+    </select>
+    <input type='button' id="statusButton3" value="Delete Calendar">
+  </div>
+  <div id="ViewPanel" class="fileLogPanel">
+    <table style="width:100%" id="table2">
+      <tr class="headerRow">
+        <th>Event Number</th>
+        <th>Start Date</th>
+        <th>Start Time</th>
+        <th>Summary</th>
+        <th>Props</th>
+        <th>Alarms</th>
+      </tr>
+    </table>
+  </div>
+
+  <div class="dropdown">
+    <span>View Alarms From Event #:</span>
+    <select id="select2">
+    </select>
+  </div>
+  <div id="ViewPanel1" class="fileLogPanel">
+    <table style="width:100%" id="table3">
+      <tr class="headerRow">
+        <th>Alarm Number</th>
+        <th>Action</th>
+        <th>Trigger</th>
+        <th>NumProps</th>
+      </tr>
+    </table>
+  </div>
+  <div class="dropdown">
+    <span>View Optional Properties From Event #:</span>
+    <select id="select3">
+    </select>
+  </div>
+  <div id="ViewPanel2" class="fileLogPanel">
+    <table style="width:100%" id="table4">
+      <tr class="headerRow">
+        <th>Property Number</th>
+        <th>Property Name</th>
+        <th>Property Description</th>
+      </tr>
+    </table>
+  </div>
+  <hr>
+  <h3 class="headers">Add Event To Selected Calendar:</h3>
+  <form ref="createEvent" id="form1">
+    <div id="eventForm">
+      <p>userID:</p>
+      <input type="text" class="form-control" id="UID1" placeholder="UserName" required="">
+      <p>Summary:</p>
+      <input type="text" class="form-control" id="SUM1" placeholder="UserName" required="">
+      <p>Event Start Date:</p>
+      <input type="text" class="form-control" id="DAT1" placeholder="YYYYMMDD" required="">
+      <p>Event Start Time:</p>
+      <input type="text" class="form-control" id="TIM1" placeholder="HHMM" required="">
+      <input type="checkbox" class="padBottom" id="UTC1">Is UTC<br>
+      <input type="submit" class="btn btn-secondary" value="AddEvent" id="makeEventButton">
+    </div>
+  </form>
+  <h3 class="headers">Make New Calendar:</h3>
+  <form ref="createCal" id="form2">
+    <div id="eventForm">
+      <p>File Name:</p>
+      <input type="text" class="form-control" id="FIL" placeholder="name.ics" required="">
+      <p>Version:</p>
+      <input type="text" class="form-control" id="VER" placeholder="2.01" required="">
+      <p>product ID:</p>
+      <input type="text" class="form-control" id="PID" placeholder="prodidtext" required="">
+      <h4>Event:</h4>
+      <p>userID:</p>
+      <input type="text" class="form-control" id="UID2" placeholder="UserName" required="">
+      <p>Summary:</p>
+      <input type="text" class="form-control" id="SUM2" placeholder="UserName" required="">
+      <p>Event Start Date:</p>
+      <input type="text" class="form-control" id="DAT2" placeholder="YYYYMMDD" required="">
+      <p>Event Start Time:</p>
+      <input type="text" class="form-control" id="TIM2" placeholder="HHMM" required="">
+      <input type="checkbox" class="padBottom" id="UTC2">Is UTC<br>
+      <input type="submit" class="btn btn-secondary" value="MakeCalendar" id="makeCalButton">
+    </div>
+  </form>
+
+  <script src="/index.js"></script>
+</body>
+</html>
